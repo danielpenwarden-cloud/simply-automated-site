@@ -80,6 +80,7 @@ export default function Home() {
         <ul className="nav-links" id="navLinks">
           <li><a href="#services">Services</a></li>
           <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#receipts">Receipts</a></li>
           <li><a href="#process">Process</a></li>
           <li><a href="#work">Work</a></li>
           <li><a href="#about">About</a></li>
@@ -172,6 +173,56 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* RECEIPT TRACKER */}
+      <section id="receipts">
+        <div className="services-header reveal">
+          <div className="section-label">Ready-to-Run Product</div>
+          <h2 className="section-title">Smart Receipt Tracking <em>from $19/month</em></h2>
+          <p className="section-desc">
+            Snap a photo of any receipt and send it to Telegram — the AI reads the store, total, GST, and payment method, logs it to Google Sheets, and saves the image to Google Drive. Automatically. No data entry, no apps, no fuss.
+          </p>
+        </div>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '1.25rem',
+          maxWidth: '900px',
+          margin: '2.5rem auto 3rem',
+        }}>
+          {[
+            { src: '/receipt-telegram.png',  caption: '📱 Send a photo — get instant confirmation in Telegram' },
+            { src: '/receipt-sheets.png',    caption: '📊 Every receipt logged automatically in Google Sheets' },
+            { src: '/receipt-drive.png',     caption: '📁 Receipt images stored and organised in Google Drive' },
+            { src: '/receipt-workflow.png',  caption: '⚙️ The automation running behind the scenes in n8n' },
+          ].map(({ src, caption }) => (
+            <div key={src} className="reveal" style={{
+              background: 'rgba(255,255,255,0.03)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: '12px',
+              overflow: 'hidden',
+            }}>
+              <img src={src} alt={caption} style={{ width: '100%', display: 'block', objectFit: 'cover' }} />
+              <div style={{
+                padding: '0.75rem 1rem',
+                fontSize: '0.8rem',
+                color: 'var(--text-secondary)',
+                borderTop: '1px solid rgba(255,255,255,0.06)',
+              }}>
+                {caption}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="reveal" style={{ textAlign: 'center' }}>
+          <a href="#contact" className="btn-primary">Get Receipt Tracker — $19/month →</a>
+          <p style={{ marginTop: '1rem', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+            Full setup included · NZ &amp; AU tax formats · Cancel anytime
+          </p>
+        </div>
+      </section>
 
       {/* HOW IT WORKS */}
       <section id="process">
