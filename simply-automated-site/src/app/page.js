@@ -4,14 +4,12 @@ import { useEffect } from 'react'
 
 export default function Home() {
   useEffect(() => {
-    // Nav scroll effect
     const handleScroll = () => {
       const nav = document.querySelector('nav')
       if (nav) nav.classList.toggle('scrolled', window.scrollY > 50)
     }
     window.addEventListener('scroll', handleScroll)
 
-    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
@@ -23,7 +21,6 @@ export default function Home() {
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
 
-    // Close mobile nav on link click
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         document.getElementById('navLinks')?.classList.remove('open')
@@ -43,11 +40,9 @@ export default function Home() {
     btn.textContent = 'Sending...'
     btn.disabled = true
 
-    const data = new FormData(form)
-
     fetch('https://formspree.io/f/xzdjepyo', {
       method: 'POST',
-      body: data,
+      body: new FormData(form),
       headers: { 'Accept': 'application/json' }
     })
       .then(response => {
@@ -79,12 +74,10 @@ export default function Home() {
         <a href="#" className="nav-logo">simply<span>.</span>automated</a>
         <ul className="nav-links" id="navLinks">
           <li><a href="#services">Services</a></li>
+          <li><a href="#automation">Automation</a></li>
+          <li><a href="/training">Training</a></li>
+          <li><a href="#work">Case Studies</a></li>
           <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#receipts">Receipts</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#work">Work</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#privacy">Privacy</a></li>
           <li><a href="#contact" className="nav-cta">Get Your Free Audit</a></li>
         </ul>
         <button className="mobile-toggle" onClick={toggleNav} aria-label="Menu">☰</button>
@@ -94,13 +87,16 @@ export default function Home() {
       <section className="hero">
         <div className="hero-grid"></div>
         <div className="hero-content">
-          <div className="hero-badge"><span className="dot"></span> Now serving New Zealand businesses</div>
+          <div className="hero-badge"><span className="dot"></span> AI automation for NZ small businesses</div>
           <h1>Stop doing tasks a<br />machine could <em>handle</em></h1>
-          <p className="hero-sub">We build AI-powered automation that saves NZ businesses hours every week — so you can focus on the work that actually matters.</p>
+          <p className="hero-sub">Practical AI automation for New Zealand small businesses.</p>
           <div className="hero-actions">
             <a href="#contact" className="btn-primary">Request a Free Audit →</a>
             <a href="#work" className="btn-secondary">See Our Work</a>
           </div>
+          <p style={{ marginTop: '0.85rem', fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+            15-minute call. No tech talk. Just quick wins.
+          </p>
         </div>
       </section>
 
@@ -116,14 +112,58 @@ export default function Home() {
             <div className="stat-label">hours per week saved with automation</div>
           </div>
           <div className="reveal">
-            <div className="stat-number">50%</div>
-            <div className="stat-label">govt co-funding available for eligible businesses</div>
+            <div className="stat-number">100%</div>
+            <div className="stat-label">of audits identify quick-win automations</div>
           </div>
         </div>
       </div>
 
+      {/* WHO THIS IS FOR */}
+      <section id="who" style={{ background: 'var(--bg-secondary)' }}>
+        <div className="services-header reveal">
+          <div className="section-label">Who we work with</div>
+          <h2 className="section-title">Built for <em>NZ business owners</em></h2>
+          <p className="section-desc">We specialise in practical AI automation for the businesses that need it most.</p>
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.5rem', maxWidth: '760px', margin: '0 auto 2.5rem' }}>
+          {['Small business owners', 'Tradies & service businesses', 'Professional services', 'Retailers & hospitality', 'Businesses drowning in admin', 'Anyone chasing invoices manually'].map(w => (
+            <span key={w} className="reveal" style={{ display: 'inline-flex', padding: '0.4rem 1rem', borderRadius: '100px', background: 'var(--bg-card)', border: '1px solid var(--border)', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{w}</span>
+          ))}
+        </div>
+        <div className="reveal" style={{ background: 'rgba(0, 229, 160, 0.08)', border: '1px solid rgba(0, 229, 160, 0.2)', borderRadius: 'var(--radius)', padding: '1.5rem 2rem', maxWidth: '560px', margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ fontSize: '0.95rem', lineHeight: 1.7, margin: 0 }}>If your business runs on spreadsheets, email, and manual follow-ups — <strong style={{ color: 'var(--accent)' }}>you&apos;re exactly who we built this for.</strong></p>
+        </div>
+      </section>
+
+      {/* PAIN POINTS */}
+      <section style={{ background: 'var(--bg-primary)' }}>
+        <div className="services-header reveal">
+          <div className="section-label">Sound familiar?</div>
+          <h2 className="section-title">Spending too much time on <em>admin?</em></h2>
+          <p className="section-desc">Most NZ small business owners lose 10–15 hours every week to tasks that could run on autopilot.</p>
+        </div>
+        <div className="services-grid">
+          {[
+            ['🧾', 'Manually entering receipts and invoices'],
+            ['📧', 'Chasing overdue payments by hand'],
+            ['📋', 'Copying data between systems that don\'t talk'],
+            ['📱', 'Missing leads due to slow response times'],
+            ['📊', 'Building reports that should build themselves'],
+            ['🔁', 'Same admin tasks, every single week'],
+          ].map(([icon, pain]) => (
+            <div key={pain} className="service-card reveal">
+              <div className="service-icon">{icon}</div>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.65 }}>{pain}</p>
+            </div>
+          ))}
+        </div>
+        <div className="reveal" style={{ background: 'rgba(0, 229, 160, 0.08)', border: '1px solid rgba(0, 229, 160, 0.2)', borderRadius: 'var(--radius)', padding: '1.5rem 2rem', maxWidth: '560px', margin: '2.5rem auto 0', textAlign: 'center' }}>
+          <p style={{ fontSize: '0.95rem', lineHeight: 1.7, margin: 0 }}>AI automation can eliminate most of this — with tools that already exist. <strong style={{ color: 'var(--accent)' }}>We set it all up for you.</strong></p>
+        </div>
+      </section>
+
       {/* SERVICES */}
-      <section id="services">
+      <section id="services" style={{ background: 'var(--bg-secondary)' }}>
         <div className="services-header reveal">
           <div className="section-label">Services</div>
           <h2 className="section-title">Everything you need to <em>automate</em></h2>
@@ -138,7 +178,7 @@ export default function Home() {
           <div className="service-card reveal">
             <div className="service-icon">⚡</div>
             <h3>Custom Workflow Builds</h3>
-            <p>Automated invoicing, lead capture, receipt processing, job scheduling — we build it end-to-end, tailored to the tools you already use like Xero, email, and spreadsheets.</p>
+            <p>Automated invoicing, lead capture, receipt processing, job scheduling — built end-to-end, tailored to the tools you already use like Xero, email, and spreadsheets.</p>
           </div>
           <div className="service-card reveal">
             <div className="service-icon">🤖</div>
@@ -163,7 +203,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRICING ANCHOR */}
+      {/* RECEIPT TRACKER */}
+      <section id="automation" style={{ background: 'var(--bg-primary)' }}>
+        <div className="services-header reveal">
+          <div className="section-label">Ready-to-Run Product</div>
+          <h2 className="section-title">Smart Receipt Tracking <em>from $19/month</em></h2>
+          <p className="section-desc">Snap a photo, send to Telegram — AI reads the store, total, GST, and payment method, then logs everything automatically to Google Sheets and saves the image to Google Drive.</p>
+        </div>
+        <div className="work-grid reveal" style={{ marginBottom: '2rem' }}>
+          <div className="work-card" style={{ padding: 0, overflow: 'hidden' }}>
+            <img src="/receipt-telegram.png" alt="Telegram receipt confirmation" style={{ width: '100%', display: 'block' }} />
+            <div style={{ padding: '0.75rem 1rem', fontSize: '0.8rem', color: 'var(--text-secondary)', borderTop: '1px solid var(--border)' }}>📱 Telegram confirmation</div>
+          </div>
+          <div className="work-card" style={{ padding: 0, overflow: 'hidden' }}>
+            <img src="/receipt-sheets.png" alt="Google Sheets log" style={{ width: '100%', display: 'block' }} />
+            <div style={{ padding: '0.75rem 1rem', fontSize: '0.8rem', color: 'var(--text-secondary)', borderTop: '1px solid var(--border)' }}>📊 Google Sheets log</div>
+          </div>
+          <div className="work-card" style={{ padding: 0, overflow: 'hidden' }}>
+            <img src="/receipt-drive.png" alt="Google Drive folder" style={{ width: '100%', display: 'block' }} />
+            <div style={{ padding: '0.75rem 1rem', fontSize: '0.8rem', color: 'var(--text-secondary)', borderTop: '1px solid var(--border)' }}>📁 Google Drive folder</div>
+          </div>
+          <div className="work-card" style={{ padding: 0, overflow: 'hidden' }}>
+            <img src="/receipt-workflow.png" alt="n8n workflow" style={{ width: '100%', display: 'block' }} />
+            <div style={{ padding: '0.75rem 1rem', fontSize: '0.8rem', color: 'var(--text-secondary)', borderTop: '1px solid var(--border)' }}>⚙️ n8n workflow</div>
+          </div>
+        </div>
+        <div style={{ textAlign: 'center' }} className="reveal">
+          <a href="#contact" className="btn-primary">Get Receipt Tracker — $19/month →</a>
+          <p style={{ marginTop: '0.75rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>Full setup included · NZ &amp; AU tax formats · Cancel anytime</p>
+        </div>
+      </section>
+
+      {/* PRICING */}
       <div id="pricing" className="stats-bar" style={{ borderTop: 'none' }}>
         <div className="stats-grid" style={{ gridTemplateColumns: '1fr', textAlign: 'center' }}>
           <div className="reveal">
@@ -174,83 +245,33 @@ export default function Home() {
         </div>
       </div>
 
-      {/* RECEIPT TRACKER */}
-      <section id="receipts">
-        <div className="services-header reveal">
-          <div className="section-label">Ready-to-Run Product</div>
-          <h2 className="section-title">Smart Receipt Tracking <em>from $19/month</em></h2>
-          <p className="section-desc">
-            Snap a photo of any receipt and send it to Telegram — the AI reads the store, total, GST, and payment method, logs it to Google Sheets, and saves the image to Google Drive. Automatically. No data entry, no apps, no fuss.
-          </p>
-        </div>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: '1.25rem',
-          maxWidth: '900px',
-          margin: '2.5rem auto 3rem',
-        }}>
-          {[
-            { src: '/receipt-telegram.png',  caption: '📱 Send a photo — get instant confirmation in Telegram' },
-            { src: '/receipt-sheets.png',    caption: '📊 Every receipt logged automatically in Google Sheets' },
-            { src: '/receipt-drive.png',     caption: '📁 Receipt images stored and organised in Google Drive' },
-            { src: '/receipt-workflow.png',  caption: '⚙️ The automation running behind the scenes in n8n' },
-          ].map(({ src, caption }) => (
-            <div key={src} className="reveal" style={{
-              background: 'rgba(255,255,255,0.03)',
-              border: '1px solid rgba(255,255,255,0.08)',
-              borderRadius: '12px',
-              overflow: 'hidden',
-            }}>
-              <img src={src} alt={caption} style={{ width: '100%', display: 'block', objectFit: 'cover' }} />
-              <div style={{
-                padding: '0.75rem 1rem',
-                fontSize: '0.8rem',
-                color: 'var(--text-secondary)',
-                borderTop: '1px solid rgba(255,255,255,0.06)',
-              }}>
-                {caption}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="reveal" style={{ textAlign: 'center' }}>
-          <a href="#contact" className="btn-primary">Get Receipt Tracker — $19/month →</a>
-          <p style={{ marginTop: '1rem', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-            Full setup included · NZ &amp; AU tax formats · Cancel anytime
-          </p>
-        </div>
-      </section>
-
       {/* HOW IT WORKS */}
       <section id="process">
         <div className="process-header reveal">
           <div className="section-label">How It Works</div>
-          <h2 className="section-title">Four steps to a <em>smarter</em> business</h2>
-          <p className="section-desc">No jargon, no complexity. We keep it simple and get you results.</p>
+          <h2 className="section-title">Simple from <em>day one</em></h2>
+          <p className="section-desc">No jargon, no complexity. We do the work — you get the results.</p>
         </div>
         <div className="process-steps">
           <div className="step reveal">
             <div className="step-num">1</div>
-            <h3>Free Audit</h3>
-            <p>We meet, learn your business, and identify where automation will have the biggest impact.</p>
+            <h3>Free Automation Audit</h3>
+            <p>We meet, learn your business, and identify the highest-value automation opportunities.</p>
           </div>
           <div className="step reveal">
             <div className="step-num">2</div>
-            <h3>Custom Plan</h3>
-            <p>You get a clear proposal with costs, timelines, and expected ROI. No surprises.</p>
+            <h3>Identify Quick Wins</h3>
+            <p>We prioritise the 2–3 workflows that will save you the most time immediately.</p>
           </div>
           <div className="step reveal">
             <div className="step-num">3</div>
-            <h3>Build &amp; Test</h3>
-            <p>We build your automations, test everything thoroughly, and make sure it works with your existing tools.</p>
+            <h3>Build &amp; Implement</h3>
+            <p>We build, test, and go live — connected to the tools you already use.</p>
           </div>
           <div className="step reveal">
             <div className="step-num">4</div>
-            <h3>Launch &amp; Support</h3>
-            <p>Go live with confidence. We train your team and provide ongoing support as you grow.</p>
+            <h3>Ongoing Optimisation</h3>
+            <p>We monitor, improve, and add new automations as your business grows.</p>
           </div>
         </div>
       </section>
@@ -260,14 +281,14 @@ export default function Home() {
         <div className="work-header reveal">
           <div className="section-label">Our Work</div>
           <h2 className="section-title">Built, tested, <em>delivering</em> results</h2>
-          <p className="section-desc">Real automation systems we&apos;ve built for NZ and Australian businesses.</p>
+          <p className="section-desc">Real automation systems built for NZ and Australian businesses.</p>
         </div>
         <div className="work-grid">
           <div className="work-card reveal">
             <div className="work-tag">Finance Automation</div>
             <h3>Smart Receipt Extraction</h3>
-            <p>AI-powered system that reads receipts, extracts line items, GST, and totals — then pushes them straight into accounting software. Handles both NZ and Australian tax formats.</p>
-            <div className="work-result">✓ Hours of manual data entry eliminated weekly</div>
+            <p>AI reads receipts, extracts GST and totals, then pushes everything straight into Google Sheets. Handles both NZ (15% GST) and Australian (10% GST) tax formats.</p>
+            <div className="work-result">✓ 90% reduction in admin time. Zero manual entry.</div>
             <div className="work-tools">
               <span className="tool-badge">📱 Telegram</span>
               <span className="tool-badge">🤖 Claude AI</span>
@@ -278,8 +299,8 @@ export default function Home() {
           <div className="work-card reveal">
             <div className="work-tag">Accounts Receivable</div>
             <h3>Invoice Follow-Up Automation</h3>
-            <p>Automated system that tracks unpaid invoices, sends polite follow-up reminders on a schedule, and escalates overdue accounts — all without you thinking about it.</p>
-            <div className="work-result">✓ Faster payments, less awkward chasing</div>
+            <p>Overdue invoices trigger AI-drafted reminders on a schedule — polite at 7 days, firmer at 14. Runs automatically without you thinking about it.</p>
+            <div className="work-result">✓ Faster payments. Zero missed follow-ups.</div>
             <div className="work-tools">
               <span className="tool-badge">📒 Xero</span>
               <span className="tool-badge">✉️ Gmail</span>
@@ -289,9 +310,9 @@ export default function Home() {
           </div>
           <div className="work-card reveal">
             <div className="work-tag">Lead Generation</div>
-            <h3>Tradie Lead Capture System</h3>
-            <p>Captures incoming leads from web forms, Facebook, and phone enquiries — instantly notifies the right person and logs everything in one place. No more missed jobs.</p>
-            <div className="work-result">✓ Zero missed leads, instant response times</div>
+            <h3>Lead Capture Automation</h3>
+            <p>Leads arrive via website, Facebook, and email — responses were slow and jobs were lost. Now every enquiry triggers an instant alert, auto-reply, and CRM entry.</p>
+            <div className="work-result">✓ Zero missed enquiries. Response time: hours → minutes.</div>
             <div className="work-tools">
               <span className="tool-badge">📘 Facebook</span>
               <span className="tool-badge">📱 Telegram</span>
@@ -300,40 +321,32 @@ export default function Home() {
             </div>
           </div>
           <div className="work-card reveal">
-            <div className="work-tag">Daily Intelligence</div>
-            <h3>Market Briefing Bot</h3>
-            <p>Automated daily briefing delivered before you start work — market movements, weather forecasts, key metrics, and anything else you need to know, customised to your business.</p>
-            <div className="work-result">✓ Start every day informed and ready</div>
+            <div className="work-tag">Business Intelligence</div>
+            <h3>Weekly Business Reports</h3>
+            <p>Owners spending hours every week manually pulling data from Xero, Sheets, and CRM to build reports. Now it all happens automatically — delivered every Monday morning.</p>
+            <div className="work-result">✓ Hours saved each week. Always know where you stand.</div>
             <div className="work-tools">
-              <span className="tool-badge">📈 Yahoo Finance</span>
-              <span className="tool-badge">🌤️ Windy API</span>
+              <span className="tool-badge">📒 Xero</span>
+              <span className="tool-badge">📊 Google Sheets</span>
               <span className="tool-badge">🤖 Claude AI</span>
               <span className="tool-badge">📱 Telegram</span>
             </div>
           </div>
         </div>
-
-        {/* FUNDING MENTION */}
-        <div className="funding-banner reveal" style={{ marginTop: '3rem' }}>
-          <div className="funding-text">
-            <h3>💡 NZ Government AI Co-Funding Available</h3>
-            <p>Eligible SMEs can access up to 50% co-funding for AI adoption through the government&apos;s pilot programme. We can help you check eligibility.</p>
-          </div>
-          <a href="#contact" className="btn-primary" style={{ whiteSpace: 'nowrap' }}>Check Eligibility →</a>
-        </div>
       </section>
 
       {/* ABOUT */}
-      <section id="about">
+      <section id="about" style={{ background: 'var(--bg-secondary)' }}>
         <div className="about-layout">
           <div className="about-text">
             <div className="section-label reveal">About</div>
             <h2 className="section-title reveal">Built by a Kiwi who gets <em>business</em></h2>
-            <p className="section-desc reveal">I&apos;m Dan — a New Zealand business owner and automation specialist. I don&apos;t just build tech, I understand the real problems small business owners face every day.</p>
+            <p className="section-desc reveal">Hi, I&apos;m Daniel. After years running and automating my own businesses, I realised most small companies spend hours every week on tasks that could easily be automated.</p>
+            <p className="reveal" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>Simply Automated helps NZ businesses implement practical AI systems that save time. No jargon. No complicated software projects. Just smarter workflows.</p>
             <div className="about-qualities reveal">
               <div className="quality">
                 <span className="quality-check">✓</span>
-                <p><strong>Plain English, no jargon.</strong> I explain everything so it makes sense, not so it sounds impressive.</p>
+                <p><strong>Plain English, no jargon.</strong> I explain everything so it makes sense to a business owner, not a developer.</p>
               </div>
               <div className="quality">
                 <span className="quality-check">✓</span>
@@ -345,9 +358,10 @@ export default function Home() {
               </div>
               <div className="quality">
                 <span className="quality-check">✓</span>
-                <p><strong>Real ROI focus.</strong> Every automation I build has a clear, measurable return. If it won&apos;t save you time or money, I won&apos;t recommend it.</p>
+                <p><strong>Real ROI focus.</strong> Every automation has a clear, measurable return. If it won&apos;t save you time or money, I won&apos;t recommend it.</p>
               </div>
             </div>
+            <p className="reveal" style={{ fontSize: '0.82rem', color: 'var(--text-muted)', margin: '1.25rem 0 1rem' }}>📍 Based in Tauranga, New Zealand · Working with NZ small businesses</p>
             <a href="#contact" className="btn-primary reveal">Let&apos;s Talk →</a>
           </div>
           <div className="about-visual reveal">
@@ -355,7 +369,7 @@ export default function Home() {
               <p className="about-quote">I built these systems because I saw how much time Kiwi business owners waste on things a computer could handle in seconds.</p>
               <div className="about-attribution">
                 <strong>Dan Penwarden</strong>
-                Founder, Simply Automated
+                Founder, Simply Automated · Tauranga, NZ
               </div>
             </div>
           </div>
@@ -391,45 +405,20 @@ export default function Home() {
             <p>The Privacy Act requires notification of serious breaches within 72 hours. Our systems are built with monitoring and alerts so you&apos;re never caught off guard.</p>
           </div>
         </div>
-
-        {/* PRIVACY FAQ */}
         <div style={{ maxWidth: '700px', margin: '3rem auto 0' }}>
           <h3 className="reveal" style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '1.5rem', textAlign: 'center' }}>Common Privacy Questions</h3>
-          
-          <div className="service-card reveal" style={{ marginBottom: '0.75rem', padding: '1.5rem 1.75rem' }}>
-            <div>
-              <h3 style={{ fontSize: '0.95rem', marginBottom: '0.4rem' }}>Where is my data stored?</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.65 }}>In your own accounts. We connect tools you already use — Google Sheets, Google Drive, Xero, Telegram — and your data stays in those platforms. We don&apos;t host or store any of your business data.</p>
+          {[
+            ['Where is my data stored?', 'In your own accounts. We connect tools you already use — Google Sheets, Google Drive, Xero, Telegram — and your data stays in those platforms. We don\'t host or store any of your business data.'],
+            ['Does AI process my sensitive information?', 'AI is used for tasks like reading receipts or extracting data from documents. The data is processed in real-time and sent directly to your own systems. We follow the Privacy Commissioner\'s guidance on AI use.'],
+            ['What happens if there\'s a data breach?', 'Under the Privacy Act 2020, serious breaches must be reported to the Privacy Commissioner and affected individuals. Our automations include monitoring and alerts to help you detect and respond quickly.'],
+            ['Can I stop or remove an automation at any time?', 'Absolutely. You own everything we build. No lock-in contracts, no vendor dependency. If you want to pause, modify, or remove any automation, you have full control.'],
+            ['Do you send data overseas?', 'Some tools like Google and AI services operate globally. Where data crosses borders, we ensure it\'s handled in line with the Privacy Act\'s cross-border disclosure rules.'],
+          ].map(([q, a]) => (
+            <div key={q} className="service-card reveal" style={{ marginBottom: '0.75rem', padding: '1.5rem 1.75rem' }}>
+              <h3 style={{ fontSize: '0.95rem', marginBottom: '0.4rem' }}>{q}</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.65 }}>{a}</p>
             </div>
-          </div>
-
-          <div className="service-card reveal" style={{ marginBottom: '0.75rem', padding: '1.5rem 1.75rem' }}>
-            <div>
-              <h3 style={{ fontSize: '0.95rem', marginBottom: '0.4rem' }}>Does AI process my sensitive information?</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.65 }}>AI is used for tasks like reading receipts or extracting data from documents. The data is processed in real-time and sent directly to your own systems. We follow the Privacy Commissioner&apos;s guidance on AI use, including transparency about what AI does and doesn&apos;t do.</p>
-            </div>
-          </div>
-
-          <div className="service-card reveal" style={{ marginBottom: '0.75rem', padding: '1.5rem 1.75rem' }}>
-            <div>
-              <h3 style={{ fontSize: '0.95rem', marginBottom: '0.4rem' }}>What happens if there&apos;s a data breach?</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.65 }}>Under the Privacy Act 2020, serious breaches must be reported to the Privacy Commissioner and affected individuals. Our automations include monitoring and alerts to help you detect and respond to any issues quickly.</p>
-            </div>
-          </div>
-
-          <div className="service-card reveal" style={{ marginBottom: '0.75rem', padding: '1.5rem 1.75rem' }}>
-            <div>
-              <h3 style={{ fontSize: '0.95rem', marginBottom: '0.4rem' }}>Can I stop or remove an automation at any time?</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.65 }}>Absolutely. You own everything we build. No lock-in contracts, no vendor dependency. If you want to pause, modify, or remove any automation, you have full control. Your data and systems remain yours.</p>
-            </div>
-          </div>
-
-          <div className="service-card reveal" style={{ marginBottom: '0.75rem', padding: '1.5rem 1.75rem' }}>
-            <div>
-              <h3 style={{ fontSize: '0.95rem', marginBottom: '0.4rem' }}>Do you send data overseas?</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: 1.65 }}>Some tools like Google and AI services operate globally. Where data crosses borders, we ensure it&apos;s handled in line with the Privacy Act&apos;s cross-border disclosure rules — meaning adequate protections are always in place.</p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -439,15 +428,14 @@ export default function Home() {
           <div className="section-label reveal">Get Started</div>
           <h2 className="section-title reveal" style={{ textAlign: 'center' }}>Request your free<br /><em>automation audit</em></h2>
           <p className="section-desc reveal" style={{ textAlign: 'center' }}>Tell us about your business and we&apos;ll show you exactly where automation can save you time and money. Packages start from just $19/month. No obligation, no hard sell.</p>
-          <form className="cta-form reveal" action="https://formspree.io/f/xzdjepyo" method="POST">
+          <form className="cta-form reveal" onSubmit={handleSubmit}>
             <input type="text" name="name" placeholder="Your name" required />
             <input type="email" name="email" placeholder="Email address" required />
             <input type="text" name="business" placeholder="Business name (optional)" />
             <textarea name="message" placeholder="Tell us briefly what your business does and your biggest time-wasters..."></textarea>
-            <input type="hidden" name="_next" value="https://simplyautomated.nz" />
             <button type="submit" className="btn-primary">Request Free Audit →</button>
           </form>
-          <p className="cta-alt reveal">Or email us directly at <a href="mailto:dan@simplyautomated.nz">dan@simplyautomated.nz</a></p>
+          <p className="cta-alt reveal">Or email directly at <a href="mailto:dan@simplyautomated.nz">dan@simplyautomated.nz</a></p>
         </div>
       </section>
 
@@ -455,12 +443,14 @@ export default function Home() {
       <footer>
         <div className="footer-inner">
           <div className="footer-left">
-            © 2026 Simply Automated Limited · <a href="mailto:dan@simplyautomated.nz">dan@simplyautomated.nz</a>
+            © 2026 Simply Automated Limited · Tauranga, New Zealand · <a href="mailto:dan@simplyautomated.nz">dan@simplyautomated.nz</a>
           </div>
           <div className="footer-links">
             <a href="#services">Services</a>
+            <a href="#automation">Automation</a>
+            <a href="/training">Training</a>
+            <a href="#work">Case Studies</a>
             <a href="#pricing">Pricing</a>
-            <a href="#work">Work</a>
             <a href="#contact">Contact</a>
           </div>
         </div>
