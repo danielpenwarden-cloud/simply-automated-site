@@ -40,11 +40,32 @@ export default function Home() {
     e.preventDefault()
     const form = e.target
     const btn = form.querySelector('button')
-    btn.textContent = "Sent! We'll be in touch ✓"
-    btn.style.background = '#00c98c'
+    btn.textContent = 'Sending...'
     btn.disabled = true
+
     const data = new FormData(form)
-    console.log('Form submission:', Object.fromEntries(data))
+
+    fetch('https://formspree.io/f/xzdjepyo', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    })
+      .then(response => {
+        if (response.ok) {
+          btn.textContent = "Sent! We'll be in touch ✓"
+          btn.style.background = '#00c98c'
+          form.reset()
+        } else {
+          btn.textContent = 'Error — try again'
+          btn.style.background = '#e05555'
+          btn.disabled = false
+        }
+      })
+      .catch(() => {
+        btn.textContent = 'Error — try again'
+        btn.style.background = '#e05555'
+        btn.disabled = false
+      })
   }
 
   function toggleNav() {
@@ -367,11 +388,12 @@ export default function Home() {
           <div className="section-label reveal">Get Started</div>
           <h2 className="section-title reveal" style={{ textAlign: 'center' }}>Request your free<br /><em>automation audit</em></h2>
           <p className="section-desc reveal" style={{ textAlign: 'center' }}>Tell us about your business and we&apos;ll show you exactly where automation can save you time and money. Packages start from just $19/month. No obligation, no hard sell.</p>
-          <form className="cta-form reveal" onSubmit={handleSubmit}>
+          <form className="cta-form reveal" action="https://formspree.io/f/xzdjepyo" method="POST">
             <input type="text" name="name" placeholder="Your name" required />
             <input type="email" name="email" placeholder="Email address" required />
             <input type="text" name="business" placeholder="Business name (optional)" />
             <textarea name="message" placeholder="Tell us briefly what your business does and your biggest time-wasters..."></textarea>
+            <input type="hidden" name="_next" value="https://simplyautomated.nz" />
             <button type="submit" className="btn-primary">Request Free Audit →</button>
           </form>
           <p className="cta-alt reveal">Or email us directly at <a href="mailto:dan@simplyautomated.nz">dan@simplyautomated.nz</a></p>
