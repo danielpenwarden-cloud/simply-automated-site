@@ -13,14 +13,13 @@
   --text-secondary: #9494a8;
   --text-muted: #5e5e72;
   --border: #2a2a3a;
-  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'DM Sans', -apple-system, sans-serif;
   --radius: 12px;
   --max-width: 1200px;
 }
 
-
-html { scroll-behavior: smooth; overflow-x: hidden; }
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
@@ -184,7 +183,7 @@ nav.scrolled {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--accent-secondary);
   animation: blink 2s ease-in-out infinite;
 }
 
@@ -549,7 +548,7 @@ section {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.85rem;
-  color: var(--accent);
+  color: var(--accent-secondary);
   font-weight: 500;
 }
 
@@ -638,7 +637,7 @@ section {
 }
 
 .quality-check {
-  color: var(--accent);
+  color: var(--accent-secondary);
   font-size: 1rem;
   margin-top: 2px;
   flex-shrink: 0;
