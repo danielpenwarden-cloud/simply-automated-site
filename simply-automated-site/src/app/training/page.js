@@ -2,6 +2,89 @@
 
 import { useEffect } from 'react'
 
+const AI_SERVICES = [
+  { icon: '🧾', title: 'Document Processing', desc: 'AI reads receipts, invoices, and forms — data extracted and logged automatically. No manual entry, no mistakes.' },
+  { icon: '📧', title: 'Email & Communication', desc: 'Sort, respond, and route emails automatically. AI handles common FAQs and flags urgent items for your attention.' },
+  { icon: '📊', title: 'Reporting & Insights', desc: 'Weekly summaries and dashboards generated automatically from your existing data. Always know where you stand.' },
+  { icon: '📱', title: 'Lead Management', desc: 'Capture leads from any channel, notify your team instantly, and follow up automatically. Zero missed enquiries.' },
+  { icon: '🔁', title: 'Workflow Automation', desc: 'Connect Xero, Gmail, Google Sheets and more — so data flows between systems without anyone copying it manually.' },
+  { icon: '📅', title: 'Scheduling & Follow-ups', desc: 'Job reminders, invoice follow-ups, appointment confirmations — automated so nothing slips through the cracks.' },
+]
+
+const WEEKS = [
+  { week: 'Week 1', title: 'AI Opportunity Audit', desc: 'We map your business and identify where AI will have the biggest impact.' },
+  { week: 'Week 2', title: 'Process Mapping', desc: 'Document workflows before any tools are built. This is where most programmes fail.' },
+  { week: 'Week 3', title: 'AI Tools Introduction', desc: 'Hands-on intro to the tools. No tech background needed — designed for owners.' },
+  { week: 'Week 4', title: 'Workflow Building', desc: 'Build your first automations together. You participate, not just watch.' },
+  { week: 'Week 5', title: 'Document Automation', desc: 'Receipts, invoices, reports — AI-powered processing set up for your business.' },
+  { week: 'Week 6', title: 'Implementation Roadmap', desc: 'A plan to roll automation across your whole business, plus the skills to keep building.' },
+]
+
+const PROGRAMME_INCLUDES = [
+  '6 weekly sessions (~2hrs each)',
+  '3–5 working automations built for your business',
+  'Designed for non-technical business owners',
+  'Full documentation and reference materials',
+  '30-day post-programme support',
+]
+
+const WORKSHOPS = [
+  {
+    icon: '🚀',
+    title: 'AI Quick Start',
+    duration: 'Half day · 3hrs',
+    price: '$750 + GST',
+    desc: 'A practical intro to AI for business owners. Walk away knowing exactly where to start and what to automate first.',
+    points: ['What AI can and can\'t do for your business', 'Live demonstrations with real examples', 'Your personalised quick-wins action plan'],
+  },
+  {
+    icon: '⚡',
+    title: 'Automation Essentials',
+    duration: 'Full day · 6hrs',
+    price: '$1,500 + GST',
+    desc: 'Build your first real automation from scratch — tailored to your specific business and the tools you already use.',
+    points: ['Map your highest-value workflows', 'Build a live, working automation', 'Connect your existing tools (Xero, Gmail, Sheets)'],
+  },
+  {
+    icon: '🔨',
+    title: 'AI for Tradies',
+    duration: 'Half day · 3hrs',
+    price: '$750 + GST',
+    desc: 'Purpose-built for trades businesses. Leads, job scheduling, and invoice follow-up — all on autopilot.',
+    points: ['Lead capture from Facebook & web', 'Automated invoice & payment follow-up', 'Job scheduling and reminder systems'],
+  },
+]
+
+const CASE_STUDIES = [
+  {
+    tag: 'Finance Automation',
+    title: 'Receipt Processing System',
+    problem: 'Manual receipt entry — 30–45 min/week, frequent errors.',
+    solution: 'AI reads photo → data extracted → logged to Sheets → image saved to Drive. NZ & AU tax formats.',
+    result: '90% reduction in admin time. Zero manual entry.',
+  },
+  {
+    tag: 'Accounts Receivable',
+    title: 'Invoice Follow-Up Automation',
+    problem: 'Late payments common. Chasing was delayed or forgotten — costing cash flow.',
+    solution: 'Xero → AI-drafted tiered reminders on schedule. Polite at 7 days, firmer at 14, final at 21.',
+    result: 'Faster payments. Zero missed follow-ups.',
+  },
+  {
+    tag: 'Lead Generation',
+    title: 'Tradie Lead Capture',
+    problem: 'Leads missed because no-one watched the inbox. Jobs lost to faster competitors.',
+    solution: 'All channels monitored → instant Telegram alert → auto-reply sent → lead logged to CRM.',
+    result: 'Zero missed leads. Response time: hours → minutes.',
+  },
+]
+
+const ABOUT_QUALITIES = [
+  { title: 'Plain English, no jargon.', desc: 'Everything is explained for business owners, not developers.' },
+  { title: 'Practical, not theoretical.', desc: 'Every session ends with something working in your business.' },
+  { title: 'You own everything.', desc: "No lock-in. I build it, teach you, and then it's yours." },
+]
+
 export default function Training() {
   useEffect(() => {
     const handleScroll = () => {
@@ -126,36 +209,13 @@ export default function Training() {
           <p className="section-desc">Practical tools any NZ small business can use right now — no tech background needed.</p>
         </div>
         <div className="services-grid">
-          <div className="service-card reveal">
-            <div className="service-icon">🧾</div>
-            <h3>Document Processing</h3>
-            <p>AI reads receipts, invoices, and forms — data extracted and logged automatically. No manual entry, no mistakes.</p>
-          </div>
-          <div className="service-card reveal">
-            <div className="service-icon">📧</div>
-            <h3>Email &amp; Communication</h3>
-            <p>Sort, respond, and route emails automatically. AI handles common FAQs and flags urgent items for your attention.</p>
-          </div>
-          <div className="service-card reveal">
-            <div className="service-icon">📊</div>
-            <h3>Reporting &amp; Insights</h3>
-            <p>Weekly summaries and dashboards generated automatically from your existing data. Always know where you stand.</p>
-          </div>
-          <div className="service-card reveal">
-            <div className="service-icon">📱</div>
-            <h3>Lead Management</h3>
-            <p>Capture leads from any channel, notify your team instantly, and follow up automatically. Zero missed enquiries.</p>
-          </div>
-          <div className="service-card reveal">
-            <div className="service-icon">🔁</div>
-            <h3>Workflow Automation</h3>
-            <p>Connect Xero, Gmail, Google Sheets and more — so data flows between systems without anyone copying it manually.</p>
-          </div>
-          <div className="service-card reveal">
-            <div className="service-icon">📅</div>
-            <h3>Scheduling &amp; Follow-ups</h3>
-            <p>Job reminders, invoice follow-ups, appointment confirmations — automated so nothing slips through the cracks.</p>
-          </div>
+          {AI_SERVICES.map((s) => (
+            <div key={s.title} className="service-card reveal">
+              <div className="service-icon">{s.icon}</div>
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -167,29 +227,20 @@ export default function Training() {
           <p className="section-desc">6 weeks. Working automations built for your specific business. Designed for non-technical business owners — not developers.</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', maxWidth: '1000px', margin: '0 auto', alignItems: 'start' }}>
-          {/* WEEK BY WEEK */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))', gap: '2.5rem', maxWidth: '1000px', margin: '0 auto', alignItems: 'start' }}>
           <div>
-            {[
-              ['Week 1', 'AI Opportunity Audit', 'We map your business and identify where AI will have the biggest impact.'],
-              ['Week 2', 'Process Mapping', 'Document workflows before any tools are built. This is where most programmes fail.'],
-              ['Week 3', 'AI Tools Introduction', 'Hands-on intro to the tools. No tech background needed — designed for owners.'],
-              ['Week 4', 'Workflow Building', 'Build your first automations together. You participate, not just watch.'],
-              ['Week 5', 'Document Automation', 'Receipts, invoices, reports — AI-powered processing set up for your business.'],
-              ['Week 6', 'Implementation Roadmap', 'A plan to roll automation across your whole business, plus the skills to keep building.'],
-            ].map(([week, title, desc]) => (
-              <div key={week} className="reveal" style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
-                <div style={{ minWidth: '62px', background: 'var(--accent-glow)', border: '1px solid rgba(0,229,160,0.2)', borderRadius: '8px', padding: '0.3rem 0.4rem', textAlign: 'center', fontSize: '0.62rem', fontWeight: 700, color: 'var(--accent)', letterSpacing: '0.05em', textTransform: 'uppercase', flexShrink: 0, marginTop: '3px' }}>{week}</div>
+            {WEEKS.map((w) => (
+              <div key={w.week} className="reveal" style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem' }}>
+                <div style={{ minWidth: '62px', background: 'var(--accent-glow)', border: '1px solid rgba(6,182,212,0.2)', borderRadius: '8px', padding: '0.3rem 0.4rem', textAlign: 'center', fontSize: '0.62rem', fontWeight: 700, color: 'var(--accent)', letterSpacing: '0.05em', textTransform: 'uppercase', flexShrink: 0, marginTop: '3px' }}>{w.week}</div>
                 <div>
-                  <h3 style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: '0.25rem' }}>{title}</h3>
-                  <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>{desc}</p>
+                  <h3 style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: '0.25rem' }}>{w.title}</h3>
+                  <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>{w.desc}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* PRICING CARD */}
-          <div className="reveal" style={{ background: 'var(--accent-glow)', border: '1px solid rgba(0,229,160,0.2)', borderRadius: 'var(--radius)', padding: '2rem', position: 'sticky', top: '100px' }}>
+          <div className="reveal" style={{ background: 'var(--accent-glow)', border: '1px solid rgba(6,182,212,0.2)', borderRadius: 'var(--radius)', padding: '2rem' }}>
             <div className="section-label" style={{ marginBottom: '0.5rem' }}>Programme Investment</div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem', marginBottom: '0.25rem' }}>
               <span style={{ fontFamily: 'var(--font-display)', fontSize: '2.8rem', color: 'var(--text-primary)', lineHeight: 1 }}>$5,000</span>
@@ -198,13 +249,7 @@ export default function Training() {
             <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: 1.6 }}>
               Designed for NZ small businesses looking to adopt AI and automation.
             </p>
-            {[
-              '6 weekly sessions (~2hrs each)',
-              '3–5 working automations built for your business',
-              'Designed for non-technical business owners',
-              'Full documentation and reference materials',
-              '30-day post-programme support',
-            ].map(f => (
+            {PROGRAMME_INCLUDES.map((f) => (
               <div key={f} style={{ display: 'flex', gap: '0.5rem', fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.6rem', alignItems: 'flex-start' }}>
                 <span style={{ color: 'var(--accent)', fontWeight: 700, flexShrink: 0 }}>✓</span>{f}
               </div>
@@ -222,21 +267,17 @@ export default function Training() {
           <p className="section-desc">Designed for non-technical business owners. A practical, low-commitment way to get started with AI.</p>
         </div>
         <div className="services-grid">
-          {[
-            ['🚀', 'AI Quick Start', 'Half day · 3hrs', '$750 + GST', 'A practical intro to AI for business owners. Walk away knowing exactly where to start and what to automate first.', ['What AI can and can\'t do for your business', 'Live demonstrations with real examples', 'Your personalised quick-wins action plan']],
-            ['⚡', 'Automation Essentials', 'Full day · 6hrs', '$1,500 + GST', 'Build your first real automation from scratch — tailored to your specific business and the tools you already use.', ['Map your highest-value workflows', 'Build a live, working automation', 'Connect your existing tools (Xero, Gmail, Sheets)']],
-            ['🔨', 'AI for Tradies', 'Half day · 3hrs', '$750 + GST', 'Purpose-built for trades businesses. Leads, job scheduling, and invoice follow-up — all on autopilot.', ['Lead capture from Facebook & web', 'Automated invoice & payment follow-up', 'Job scheduling and reminder systems']],
-          ].map(([icon, title, dur, price, desc, points]) => (
-            <div key={title} className="service-card reveal" style={{ display: 'flex', flexDirection: 'column' }}>
-              <div className="service-icon">{icon}</div>
-              <h3>{title}</h3>
+          {WORKSHOPS.map((w) => (
+            <div key={w.title} className="service-card reveal" style={{ display: 'flex', flexDirection: 'column' }}>
+              <div className="service-icon">{w.icon}</div>
+              <h3>{w.title}</h3>
               <div style={{ display: 'flex', gap: '0.5rem', margin: '0.5rem 0 0.85rem', flexWrap: 'wrap' }}>
-                <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border)', borderRadius: '6px', padding: '0.2rem 0.6rem', color: 'var(--text-secondary)' }}>{dur}</span>
-                <span style={{ fontSize: '0.72rem', background: 'var(--accent-glow)', border: '1px solid rgba(0,229,160,0.25)', borderRadius: '6px', padding: '0.2rem 0.6rem', color: 'var(--accent)', fontWeight: 600 }}>{price}</span>
+                <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border)', borderRadius: '6px', padding: '0.2rem 0.6rem', color: 'var(--text-secondary)' }}>{w.duration}</span>
+                <span style={{ fontSize: '0.72rem', background: 'var(--accent-glow)', border: '1px solid rgba(6,182,212,0.25)', borderRadius: '6px', padding: '0.2rem 0.6rem', color: 'var(--accent)', fontWeight: 600 }}>{w.price}</span>
               </div>
-              <p style={{ flex: 1 }}>{desc}</p>
+              <p style={{ flex: 1 }}>{w.desc}</p>
               <div style={{ marginTop: '1.25rem', paddingTop: '1.25rem', borderTop: '1px solid var(--border)' }}>
-                {points.map(p => (
+                {w.points.map((p) => (
                   <div key={p} style={{ display: 'flex', gap: '0.5rem', fontSize: '0.82rem', color: 'var(--text-secondary)', marginBottom: '0.5rem', alignItems: 'flex-start' }}>
                     <span style={{ color: 'var(--accent)', fontWeight: 700, flexShrink: 0 }}>✓</span>{p}
                   </div>
@@ -255,19 +296,15 @@ export default function Training() {
           <p className="section-desc">Every one of these started as a manual process costing someone hours every week.</p>
         </div>
         <div className="work-grid">
-          {[
-            ['Finance Automation', 'Receipt Processing System', 'Manual receipt entry — 30–45 min/week, frequent errors', 'AI reads photo → data extracted → logged to Sheets → image saved to Drive. NZ & AU tax formats.', '90% reduction in admin time. Zero manual entry.'],
-            ['Accounts Receivable', 'Invoice Follow-Up Automation', 'Late payments common. Chasing was delayed or forgotten — costing cash flow.', 'Xero → AI-drafted tiered reminders on schedule. Polite at 7 days, firmer at 14, final at 21.', 'Faster payments. Zero missed follow-ups.'],
-            ['Lead Generation', 'Tradie Lead Capture', 'Leads missed because no-one watched the inbox. Jobs lost to faster competitors.', 'All channels monitored → instant Telegram alert → auto-reply sent → lead logged to CRM.', 'Zero missed leads. Response time: hours → minutes.'],
-          ].map(([tag, title, problem, solution, result]) => (
-            <div key={title} className="work-card reveal">
-              <div className="work-tag">{tag}</div>
-              <h3>{title}</h3>
+          {CASE_STUDIES.map((c) => (
+            <div key={c.title} className="work-card reveal">
+              <div className="work-tag">{c.tag}</div>
+              <h3>{c.title}</h3>
               <p style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.3rem', marginTop: '0.75rem' }}>Problem</p>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6 }}>{problem}</p>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6 }}>{c.problem}</p>
               <p style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.3rem', marginTop: '0.75rem' }}>Solution</p>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6 }}>{solution}</p>
-              <div className="work-result">✓ {result}</div>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6 }}>{c.solution}</p>
+              <div className="work-result">✓ {c.result}</div>
             </div>
           ))}
         </div>
@@ -282,18 +319,12 @@ export default function Training() {
             <p className="section-desc reveal">Hi, I&apos;m Daniel. After years running and automating my own businesses, I realised most small companies spend hours every week on tasks that could easily be automated.</p>
             <p className="reveal" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>Simply Automated helps NZ businesses implement practical AI systems that save time. No jargon. No complicated software projects. Just smarter workflows.</p>
             <div className="about-qualities reveal">
-              <div className="quality">
-                <span className="quality-check">✓</span>
-                <p><strong>Plain English, no jargon.</strong> Everything is explained for business owners, not developers.</p>
-              </div>
-              <div className="quality">
-                <span className="quality-check">✓</span>
-                <p><strong>Practical, not theoretical.</strong> Every session ends with something working in your business.</p>
-              </div>
-              <div className="quality">
-                <span className="quality-check">✓</span>
-                <p><strong>You own everything.</strong> No lock-in. I build it, teach you, and then it&apos;s yours.</p>
-              </div>
+              {ABOUT_QUALITIES.map((q) => (
+                <div key={q.title} className="quality">
+                  <span className="quality-check">✓</span>
+                  <p><strong>{q.title}</strong> {q.desc}</p>
+                </div>
+              ))}
             </div>
             <p className="reveal" style={{ fontSize: '0.82rem', color: 'var(--text-muted)', margin: '1.25rem 0 1rem' }}>📍 Based in Tauranga, New Zealand · Working with NZ small businesses</p>
             <a href="/#contact" className="btn-primary reveal">Let&apos;s Talk →</a>
@@ -345,4 +376,3 @@ export default function Training() {
     </>
   )
 }
-
