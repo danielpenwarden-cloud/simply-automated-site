@@ -10,7 +10,7 @@ export const metadata = {
     siteName: 'Simply Automated',
     images: [
       {
-        url: 'https://www.simplyautomated.nz/og-image.png',
+        url: 'https://www.simplyautomated.nz/opengraph-image.png',
         width: 1200,
         height: 630,
         alt: 'Simply Automated — AI Automation for NZ Business',
@@ -22,7 +22,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Simply Automated — AI Automation for NZ Business',
     description: 'Practical AI automation for New Zealand small businesses. Save 15+ hours a week.',
-    images: ['https://www.simplyautomated.nz/og-image.png'],
+    images: ['https://www.simplyautomated.nz/opengraph-image.png'],
   },
 }
 
